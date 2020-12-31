@@ -1,0 +1,37 @@
+    <div class="col-md-12">
+        <h1>{{ firstName }} {{ lastName }}</h1>
+        <p>email: {{ email }}</p>
+        <button type="button" class="btn btn-primary" (click)="onEdit()">Edit email</button>
+        <div *ngIf="editIsOn==true">
+            <br>
+            <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+                 <div class="col-xs-12">
+                    <div class="form-group">
+                       <label for="email">Email</label> 
+                       <input 
+                         type="email"
+                         class="form-control"
+                         id="email"
+                         formControlName="email">
+                    </div> 
+                 </div>
+                 <div class="row">
+                    <div class="col-xs-12">
+                        <button 
+                            type="submit"
+                            class="btn btn-success"
+                            [disabled]="!userForm.valid"
+                            (click)="onSubmit()">Submit
+                        </button>
+                        <div class="divider"></div>
+                        <button 
+                            type="button"
+                            class="btn btn-danger"
+                            (click)="onCancel()">Cancel
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    

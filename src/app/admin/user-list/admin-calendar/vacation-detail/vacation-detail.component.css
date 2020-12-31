@@ -1,0 +1,11 @@
+.divider-long{
+    width:30px;
+    height:auto;
+    display:inline-block;
+}
+
+.divider-short{
+    width:5px;
+    height:auto;
+    display:inline-block;
+}

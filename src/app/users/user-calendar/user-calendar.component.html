@@ -1,0 +1,29 @@
+<div class="row">
+    <button class="btn btn-primary" (click)="onNewVacation()">Add New Vacation</button>
+    <div class="divider"></div>
+    <button class="btn btn-success" (click)="onSaveChanges()" [disabled]="!changesMade" >Save changes    </button>
+</div>
+<hr>
+<div class="row">
+    <div class="col-md-12">
+        <h3>Upcoming vacations</h3>
+        <ul *ngFor="let vacation of vacationsList; let i=index" class="list-group list-group-flush" >
+            <li *ngIf="vacation.startDate >= currentDate" class="list-group-item list-group-item-info">
+                <p>From {{ vacation.startDate | date }} To {{ vacation.endDate | date}}</p>
+                <p>Approved: {{ vacation.approved ? 'Yes' : 'No' }}</p>
+                <div class="btn-toolbar">
+                    <button class="btn btn-primary" (click)="onEdit(i)">Edit</button>
+                    <button class="btn btn-danger" (click)="onRemove(i)">Remove</button>
+                </div>
+            </li>
+        </ul>
+        <hr>
+        <h3>Ongoing vacations</h3>
+        <ul *ngFor="let vacation of vacationsList" class="list-group">
+            <li *ngIf="vacation.startDate <= currentDate  && vacation.endDate >= currentDate"
+                class="list-group-item list-group-item-success">
+                <p>From {{ vacation.startDate | date }} To {{ vacation.endDate | date}}</p>
+             </li>
+        </ul>
+    </div>
+</div>

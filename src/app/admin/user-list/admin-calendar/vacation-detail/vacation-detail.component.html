@@ -1,0 +1,21 @@
+<br><br>
+<div class="row">
+    Start Date: {{ selectedVacation.startDate | date}}   
+    <div class="divider-long"></div>
+    End Date: {{ selectedVacation.endDate | date}}
+</div>
+<br>
+<div class="row">
+    Note:
+</div>    
+<div class="row">
+    {{ selectedVacation.note.length!=0 ? selectedVacation.note : "/" }}
+</div>
+<br>
+<div class="row">
+    <div class="pull-right" *ngIf="!selectedVacation.approved">
+        <button class="btn btn-primary" (click)="onApprove()">Approve</button>
+        <div class="divider-short"></div>
+        <button class="btn btn-danger" (click)="onDeny()" >Delete</button>
+    </div>
+</div>

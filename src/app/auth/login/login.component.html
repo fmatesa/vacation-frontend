@@ -1,0 +1,36 @@
+<div>
+    <div class="col-xs-12 col-md-6 col-md-offset-3">
+        <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input
+                    type="email"
+                    id="email"
+                    class="form-control"
+                    formControlName="email">
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input
+                    type="password"
+                    id="password"
+                    class="form-control"
+                    formControlName="password">
+            </div>
+            <div>
+                <button
+                    class="btn btn-primary"
+                    type="submit"
+                    [disabled]="!loginForm.valid">Login</button>
+                <div class="divider"></div>
+                <button
+                    class="btn btn-primary"
+                    (click)="onSwitchToSignup()"
+                    type="button">Switch To Sign Up</button>
+            </div>
+        </form>
+        <div>
+            <a [routerLink]="['/login/forgot']">forgot password?</a>
+        </div>
+    </div>
+</div>

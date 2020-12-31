@@ -1,0 +1,24 @@
+<br>
+<div class="row">
+    <div class="col-md-6">
+        <h3>{{ firstName }}'s vacations</h3>
+        <ul *ngFor="let vacation of selectedUserVacations; let i=index" class="list-group list-group-flush" >
+            <li *ngIf="!vacation.approved" class="list-group-item list-group-item-danger">
+                <a style="cursor: pointer;" (click)="onVacationSelect(i)">
+                    <p>From {{ vacation.startDate | date }} To {{ vacation.endDate | date}}</p>
+                </a>
+            </li>
+        </ul>
+        <hr>
+        <ul *ngFor="let vacation of selectedUserVacations; let i=index" class="list-group">
+            <li *ngIf="vacation.approved" class="list-group-item list-group-item-success">
+                <a style="cursor: pointer;" (click)="onVacationSelect(i)"
+                    >From {{ vacation.startDate | date }} To {{ vacation.endDate | date}}
+                </a>
+             </li>
+        </ul>
+    </div>
+    <div class="col-md-6">
+        <router-outlet></router-outlet>
+    </div>
+</div>
